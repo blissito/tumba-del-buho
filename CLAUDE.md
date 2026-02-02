@@ -36,6 +36,38 @@ git push origin main
 ## Spots Publicitarios
 Los espacios publicitarios son placeholders de demostración. El email de contacto es `hola@formmy.app`.
 
+## Imágenes INAH (URLs directas)
+
+### Foto del Día (27 enero 2026)
+| Imagen | URL |
+|--------|-----|
+| Búho guardián HD (2000×3001) | `https://inah.gob.mx/images/fotodeldia/20260127_fotodia_27Enero.jpg` |
+
+### Boletín 30 - Descubrimiento (23 enero 2026)
+| Imagen | URL |
+|--------|-----|
+| Entrada con jambas | `https://inah.gob.mx/images/boletines/2026/30/foto_home.jpg` |
+| Arqueólogas trabajando | `https://inah.gob.mx/images/boletines/2026/30/foto1.jpg` |
+| Búho vista lateral | `https://inah.gob.mx/images/boletines/2026/30/foto2.jpg` |
+| Rostro bajo el pico | `https://inah.gob.mx/images/boletines/2026/30/foto3.jpg` |
+| Jamba con personaje | `https://inah.gob.mx/images/boletines/2026/30/foto4.jpg` |
+| Búho close-up | `https://inah.gob.mx/images/boletines/2026/30/foto5.jpg` |
+| Dintel panorámico | `https://inah.gob.mx/images/boletines/2026/30/foto6.jpg` |
+| Jamba con ancestro | `https://inah.gob.mx/images/boletines/2026/30/foto7.jpg` |
+
+### Boletín 40 - Visita oficial (29 enero 2026)
+| Imagen | URL |
+|--------|-----|
+| Secretaria y Gobernador | `https://inah.gob.mx/images/boletines/2026/40/foto_home.jpg` |
+| Búho ángulo frontal | `https://inah.gob.mx/images/boletines/2026/40/foto1.jpg` |
+| Funcionarios observando | `https://inah.gob.mx/images/boletines/2026/40/foto2.jpg` |
+| Vista del sitio | `https://inah.gob.mx/images/boletines/2026/40/foto3.jpg` |
+| Sitio con comunidad | `https://inah.gob.mx/images/boletines/2026/40/foto4.jpg` |
+| Secretaria bajando | `https://inah.gob.mx/images/boletines/2026/40/foto5.jpg` |
+| Close-up pico búho | `https://inah.gob.mx/images/boletines/2026/40/foto6.jpg` |
+
+**Total: 16 imágenes oficiales del INAH**
+
 ## Notas
 - El contenido está basado en fuentes oficiales del INAH y Gobierno de México
 - Esta es una demo de las capacidades de Formmy.app

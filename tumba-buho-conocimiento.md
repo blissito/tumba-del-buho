@@ -189,3 +189,72 @@ La Tumba 10 de Huitzo fue descubierta gracias a una denuncia anónima de saqueo.
 ## Fuentes oficiales de información
 
 Para información oficial sobre la Tumba 10 de Huitzo, consulta estas fuentes. El Instituto Nacional de Antropología e Historia tiene su sitio web en inah.gob.mx. La Secretaría de Cultura federal está en gob.mx/cultura. El Gobierno del Estado de Oaxaca tiene información en oaxaca.gob.mx. Para visitas turísticas, la Secretaría de Turismo de Oaxaca puede proporcionar información actualizada sobre acceso al sitio.
+
+---
+
+## ¿Dónde ver la foto del búho guardián de la Tumba 10?
+
+La foto oficial del búho guardián está en el INAH Foto del Día. Muestra la escultura del búho con el rostro del señor zapoteca debajo del pico. Foto por Gerardo Peña, INAH.
+Imagen directa: https://inah.gob.mx/images/fotodeldia/20260127_fotodia_27Enero.jpg
+Artículo: https://inah.gob.mx/foto-del-dia/el-guardian-del-inframundo-de-la-tumba-de-huitzo
+
+---
+
+## ¿Dónde ver fotos del interior de la Tumba 10?
+
+Fotos oficiales de la Tumba 10 de Huitzo del boletín del INAH (23 enero 2026). Fotos por Luis Gerardo Peña Torres, INAH.
+Entrada con jambas talladas: https://inah.gob.mx/images/boletines/2026/30/foto_home.jpg
+Arqueólogas trabajando: https://inah.gob.mx/images/boletines/2026/30/foto1.jpg
+Búho guardián vista lateral: https://inah.gob.mx/images/boletines/2026/30/foto2.jpg
+Rostro bajo el pico del búho: https://inah.gob.mx/images/boletines/2026/30/foto3.jpg
+Jamba con personaje tallado: https://inah.gob.mx/images/boletines/2026/30/foto4.jpg
+Búho y rostro close-up: https://inah.gob.mx/images/boletines/2026/30/foto5.jpg
+Dintel panorámico con búho: https://inah.gob.mx/images/boletines/2026/30/foto6.jpg
+Jamba con ancestro y tocado: https://inah.gob.mx/images/boletines/2026/30/foto7.jpg
+Artículo completo: https://inah.gob.mx/boletines/el-gobierno-de-mexico-anuncia-el-descubrimiento-de-una-milenaria-tumba-zapoteca
+
+---
+
+## ¿Hay fotos de la visita oficial a la Tumba 10?
+
+Fotos de la visita de la Secretaria de Cultura Claudia Curiel de Icaza a la Tumba 10 de Huitzo (29 enero 2026). INAH.
+Secretaria y Gobernador frente al búho: https://inah.gob.mx/images/boletines/2026/40/foto_home.jpg
+Búho guardián ángulo frontal: https://inah.gob.mx/images/boletines/2026/40/foto1.jpg
+Funcionarios observando el búho: https://inah.gob.mx/images/boletines/2026/40/foto2.jpg
+Vista del sitio con visitantes: https://inah.gob.mx/images/boletines/2026/40/foto3.jpg
+Sitio con comunidad local: https://inah.gob.mx/images/boletines/2026/40/foto4.jpg
+Secretaria bajando a la tumba: https://inah.gob.mx/images/boletines/2026/40/foto5.jpg
+Close-up pico del búho: https://inah.gob.mx/images/boletines/2026/40/foto6.jpg
+Artículo: https://inah.gob.mx/boletines/secretaria-claudia-curiel-de-icaza-refrenda-el-compromiso-con-las-comunidades-para-la-preservacion-de-la-tumba-10-de-huitzo
+
+---
+
+## ¿Dónde ver galería de fotos de la Tumba del Búho?
+
+El Financiero tiene una galería completa con fotos del búho, las jambas y los murales de la Tumba 10 de Huitzo.
+Galería: https://www.elfinanciero.com.mx/nacional/2026/01/23/asi-es-la-tumba-10-de-huitzo-el-descubrimiento-zapoteco-mas-relevante-de-la-ultima-decada-en-mexico/
+
+---
+
+## ¿Hay más fotos de la Tumba 10 en otros medios?
+
+Sí, varios medios mexicanos publicaron fotos de la Tumba 10 de Huitzo:
+- Infobae: https://www.infobae.com/mexico/2026/01/25/que-se-sabe-de-la-tumba-zapoteca-descubierta-por-el-inah-en-oaxaca-y-por-que-es-relevante/
+- N+: https://www.nmas.com.mx/nacional/inah-descubre-tumba-huitzo-en-oaxaca-asi-es-el-hallazgo-zapoteco-mas-relevante-en-ultima-decada/
+- ADN40: https://www.adn40.mx/mexico/2026-01-23/inah-descubre-tumba-10-huitzo-tesoro-zapoteca-en-oaxaca/
+- UnoTV: https://www.unotv.com/cultura/hallazgo-historico-en-oaxaca-descubren-la-tumba-10-de-huitzo-el-mas-importante-de-la-decada/
+
+---
+
+## ¿Cómo se ve el búho guardián de la tumba?
+
+El búho guardián de la Tumba 10 de Huitzo es una escultura de estuco en la entrada de la antecámara. Tiene ojos circulares grandes característicos del búho. Debajo del pico hay un rostro humano estucado y pintado de un señor zapoteca. Los colores visibles son rojo, ocre y blanco. El personaje tiene una orejera circular. Se cree que es un retrato del ocupante de la tumba. El pico del búho enmarca el rostro como protección simbólica.
+Foto del búho: https://inah.gob.mx/images/fotodeldia/20260127_fotodia_27Enero.jpg
+
+---
+
+## ¿Cómo se ve el interior de la Tumba 10?
+
+El interior de la Tumba 10 de Huitzo muestra una cámara funeraria con bóveda escalonada de piedra caliza. Las paredes tienen restos de murales policromos en colores ocre, blanco, verde, rojo y azul. La técnica constructiva zapoteca es visible en el techo abovedado. El recubrimiento interior es de estuco.
+Foto entrada con jambas: https://inah.gob.mx/images/boletines/2026/30/foto_home.jpg
+Foto interior: https://inah.gob.mx/images/boletines/2026/30/foto2.jpg
