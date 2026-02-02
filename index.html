@@ -6,27 +6,24 @@
     <title>La Tumba del Búho | Descubrimiento Arqueológico Zapoteca</title>
     <meta name="description" content="Descubre la Tumba 10 de Huitzo, el hallazgo arqueológico más importante de la última década en México. Una tumba zapoteca de 1,400 años.">
 
-    <!-- SEO Meta Tags -->
-    <meta name="keywords" content="tumba del búho, zapoteca, huitzo, oaxaca, arqueología, INAH, México, tumba 10, mesoamérica">
+    <!-- SEO -->
+    <meta name="keywords" content="tumba del búho, zapoteca, huitzo, oaxaca, arqueología, INAH, México">
     <meta name="author" content="Formmy.app">
-    <meta name="robots" content="index, follow">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="La Tumba del Búho | Descubrimiento Arqueológico Zapoteca">
     <meta property="og:description" content="Descubre la Tumba 10 de Huitzo, el hallazgo arqueológico más importante de la última década en México.">
-    <meta property="og:locale" content="es_MX">
+    <meta property="og:image" content="https://inah.gob.mx/images/fotodeldia/20260127_fotodia_27Enero.jpg">
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="La Tumba del Búho | Descubrimiento Arqueológico Zapoteca">
-    <meta name="twitter:description" content="Descubre la Tumba 10 de Huitzo, el hallazgo arqueológico más importante de la última década en México.">
-
-    <!-- Favicon (SVG owl) -->
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦉</text></svg>">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Motion -->
+    <script src="https://cdn.jsdelivr.net/npm/motion@11.15.0/dist/motion.js"></script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +39,6 @@
                         night: '#1a1a1a',
                         gold: '#d4a853',
                         'gold-light': '#e8c878',
-                        terracotta: '#8b4513',
                         jade: '#2d5a4a',
                         cream: '#f5f0e6'
                     },
@@ -56,312 +52,1238 @@
     </script>
 
     <style>
-        body {
-            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+        html { scroll-behavior: smooth; }
+        .glow-gold { text-shadow: 0 0 40px rgba(212, 168, 83, 0.4); }
+        .gradient-text {
+            background: linear-gradient(135deg, #d4a853 0%, #e8c878 50%, #d4a853 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .animate-on-load { opacity: 0; }
+
+        /* Gallery items - CSS only hover */
+        .gallery-item {
+            break-inside: avoid;
+            border: 1px solid rgba(212, 168, 83, 0.1);
+            transition: border-color 0.3s, transform 0.3s ease;
+            cursor: pointer;
+            min-height: 100px;
+        }
+        @media (min-width: 640px) {
+            .gallery-item {
+                min-height: 150px;
+            }
+        }
+        .gallery-item:hover,
+        .gallery-item:focus-within {
+            border-color: rgba(212, 168, 83, 0.3);
+            transform: scale(1.02);
+        }
+        .gallery-item:focus-within {
+            outline: 2px solid #d4a853;
+            outline-offset: 2px;
+        }
+        /* Disable scale on touch devices to prevent janky behavior */
+        @media (hover: none) {
+            .gallery-item:hover {
+                transform: none;
+            }
+            .gallery-item:active {
+                transform: scale(0.98);
+            }
         }
 
-        .glow-gold {
-            text-shadow: 0 0 20px rgba(212, 168, 83, 0.3);
+        /* Image loading states */
+        .gallery-img {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            transition: opacity 0.3s ease;
+        }
+        .gallery-img[data-loaded="false"] {
+            opacity: 0;
+        }
+        .gallery-img[data-loaded="true"] {
+            opacity: 1;
         }
 
-        .border-glow {
-            box-shadow: 0 0 15px rgba(212, 168, 83, 0.2), inset 0 0 15px rgba(212, 168, 83, 0.05);
+        /* Skeleton loader */
+        .skeleton {
+            background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+            background-size: 200% 100%;
+            animation: skeleton-pulse 1.5s ease-in-out infinite;
+        }
+        @keyframes skeleton-pulse {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
 
-        .owl-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5c-2 0-4 1-5 3-1-2-3-3-5-3-4 0-7 3-7 7 0 2 1 4 2 5l10 12 10-12c1-1 2-3 2-5 0-4-3-7-7-7z' fill='%23d4a853' fill-opacity='0.03'/%3E%3C/svg%3E");
+        /* Bento grid images */
+        .bento-img {
+            transition: transform 0.3s ease;
+        }
+        .bento-img:hover {
+            transform: scale(1.02);
         }
 
-        .mesoamerican-border {
-            border-image: linear-gradient(90deg, transparent, #d4a853, transparent) 1;
+        /* ===== LIGHTBOX STYLES ===== */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(10, 10, 10, 0.97);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .lightbox-content {
+            position: relative;
+            max-width: min(95vw, 1200px);
+            max-height: 70vh;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .lightbox.active .lightbox-content {
+            transform: scale(1);
+        }
+        .lightbox-img {
+            max-width: min(95vw, 1200px);
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 0.375rem;
+        }
+        @media (min-width: 640px) {
+            .lightbox-content {
+                max-width: min(85vw, 1200px);
+                max-height: 75vh;
+            }
+            .lightbox-img {
+                max-width: min(85vw, 1200px);
+                max-height: 75vh;
+                border-radius: 0.5rem;
+            }
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+        /* Top bar with counter and close */
+        .lightbox-topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.9), transparent);
+            z-index: 10;
+        }
+        @media (min-width: 640px) {
+            .lightbox-topbar {
+                padding: 1rem 1.5rem;
+            }
+        }
+        .lightbox-counter {
+            color: rgba(245, 240, 230, 0.8);
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+        }
+        @media (min-width: 640px) {
+            .lightbox-counter {
+                font-size: 0.9rem;
+            }
+        }
+        .lightbox-close {
+            color: #f5f0e6;
+            font-size: 1.25rem;
+            width: 2.25rem;
+            height: 2.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: color 0.2s, background 0.2s;
+            background: rgba(245, 240, 230, 0.15);
+            border-radius: 50%;
+        }
+        @media (min-width: 640px) {
+            .lightbox-close {
+                font-size: 1.5rem;
+                width: 2.5rem;
+                height: 2.5rem;
+                background: rgba(245, 240, 230, 0.1);
+            }
+        }
+        .lightbox-close:hover,
+        .lightbox-close:focus {
+            color: #d4a853;
+            background: rgba(245, 240, 230, 0.2);
         }
 
-        .float-animation {
-            animation: float 4s ease-in-out infinite;
+        /* Bottom bar with nav and caption */
+        .lightbox-bottombar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0.75rem 1rem 1rem;
+            background: linear-gradient(to top, rgba(10,10,10,0.9), transparent);
+            z-index: 10;
+        }
+        @media (min-width: 640px) {
+            .lightbox-bottombar {
+                padding: 1rem 1.5rem 1.5rem;
+            }
+        }
+        .lightbox-caption {
+            color: #f5f0e6;
+            font-family: 'Crimson Text', serif;
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+            text-align: center;
+            padding: 0 0.5rem;
+            line-height: 1.4;
+        }
+        @media (min-width: 640px) {
+            .lightbox-caption {
+                font-size: 1rem;
+                margin-bottom: 1rem;
+            }
+        }
+        .lightbox-nav-container {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+        @media (min-width: 640px) {
+            .lightbox-nav-container {
+                gap: 1rem;
+            }
+        }
+        .lightbox-nav {
+            color: #f5f0e6;
+            font-size: 1.25rem;
+            width: 2.75rem;
+            height: 2.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: color 0.2s, background 0.2s, transform 0.2s;
+            background: rgba(245, 240, 230, 0.15);
+            border-radius: 50%;
+        }
+        @media (min-width: 640px) {
+            .lightbox-nav {
+                width: 3rem;
+                height: 3rem;
+                background: rgba(245, 240, 230, 0.1);
+            }
+        }
+        .lightbox-nav:hover,
+        .lightbox-nav:focus {
+            color: #d4a853;
+            background: rgba(245, 240, 230, 0.2);
+            transform: scale(1.1);
         }
 
-        /* Formmy widget positioning */
-        #formmy-widget {
-            min-height: 500px;
+        /* Click zones for easier navigation */
+        .lightbox-zone {
+            position: fixed;
+            top: 3.5rem;
+            bottom: 5rem;
+            width: 15%;
+            min-width: 50px;
+            cursor: pointer;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        @media (min-width: 640px) {
+            .lightbox-zone {
+                top: 4rem;
+                bottom: 6rem;
+                width: 20%;
+                min-width: 80px;
+            }
+        }
+        /* Show zones on touch devices */
+        @media (hover: none) {
+            .lightbox-zone {
+                opacity: 0.5;
+            }
+        }
+        .lightbox-zone:hover {
+            opacity: 1;
+        }
+        .lightbox-zone-prev {
+            left: 0;
+            justify-content: flex-start;
+            padding-left: 0.5rem;
+            background: linear-gradient(to right, rgba(10,10,10,0.4), transparent);
+        }
+        @media (min-width: 640px) {
+            .lightbox-zone-prev {
+                padding-left: 1rem;
+                background: linear-gradient(to right, rgba(10,10,10,0.3), transparent);
+            }
+        }
+        .lightbox-zone-next {
+            right: 0;
+            justify-content: flex-end;
+            padding-right: 0.5rem;
+            background: linear-gradient(to left, rgba(10,10,10,0.4), transparent);
+        }
+        @media (min-width: 640px) {
+            .lightbox-zone-next {
+                padding-right: 1rem;
+                background: linear-gradient(to left, rgba(10,10,10,0.3), transparent);
+            }
+        }
+        .lightbox-zone-icon {
+            color: #f5f0e6;
+            font-size: 1.5rem;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+        @media (min-width: 640px) {
+            .lightbox-zone-icon {
+                font-size: 2rem;
+            }
+        }
+
+        /* Focus visible for keyboard users */
+        .lightbox-nav:focus-visible,
+        .lightbox-close:focus-visible {
+            outline: 2px solid #d4a853;
+            outline-offset: 2px;
+        }
+
+        /* Touch device tap feedback */
+        @media (hover: none) {
+            .lightbox-nav:active,
+            .lightbox-close:active {
+                transform: scale(0.95);
+                background: rgba(212, 168, 83, 0.3);
+            }
         }
     </style>
 </head>
-<body class="min-h-screen text-cream owl-pattern">
+<body class="bg-obsidian text-cream">
 
-    <!-- Header -->
-    <header class="relative py-12 px-4 text-center border-b border-gold/20">
-        <div class="max-w-4xl mx-auto">
-            <!-- Owl Icon -->
-            <div class="text-6xl mb-4 float-animation">🦉</div>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-gold focus:text-obsidian focus:px-4 focus:py-2 focus:rounded">
+        Saltar al contenido principal
+    </a>
 
-            <h1 class="font-cinzel text-4xl md:text-5xl lg:text-6xl font-bold text-gold glow-gold mb-4">
-                La Tumba del Búho
-            </h1>
-            <p class="font-crimson text-xl md:text-2xl text-cream/80 italic">
-                El guardián del inframundo zapoteca resurge después de 1,400 años
-            </p>
+    <!-- ============================================ -->
+    <!-- HERO SECTION                                -->
+    <!-- ============================================ -->
+    <section id="hero" class="min-h-screen flex flex-col justify-center relative px-4 sm:px-6 md:px-12 lg:px-24 py-8 sm:py-12">
 
-            <!-- Decorative line -->
-            <div class="mt-8 flex items-center justify-center gap-4">
-                <div class="h-px w-16 bg-gradient-to-r from-transparent to-gold/50"></div>
-                <div class="text-gold text-2xl">◆</div>
-                <div class="h-px w-16 bg-gradient-to-l from-transparent to-gold/50"></div>
-            </div>
-        </div>
-    </header>
+        <div class="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
 
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 py-12">
-        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+            <!-- Left: Content (3 cols) -->
+            <main id="main-content" class="lg:col-span-3 flex flex-col">
 
-            <!-- Left Column: Info -->
-            <section class="space-y-8">
-                <!-- Hero Card -->
-                <div class="bg-night/80 rounded-lg p-6 md:p-8 border border-gold/20 border-glow">
-                    <h2 class="font-cinzel text-2xl md:text-3xl text-gold mb-4">
-                        El Descubrimiento del Siglo
-                    </h2>
-
-                    <p class="font-crimson text-lg text-cream/90 leading-relaxed mb-6">
-                        En el corazón de Oaxaca, una tumba zapoteca guardó sus secretos durante más de un milenio.
-                        Ahora, el búho que custodia su entrada vuelve a mirar al mundo de los vivos.
-                    </p>
-
-                    <!-- Key Facts -->
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <div class="bg-obsidian/50 rounded p-4 text-center">
-                            <div class="text-3xl font-cinzel text-gold">1,400</div>
-                            <div class="text-sm text-cream/60">años de antigüedad</div>
-                        </div>
-                        <div class="bg-obsidian/50 rounded p-4 text-center">
-                            <div class="text-3xl font-cinzel text-gold">2026</div>
-                            <div class="text-sm text-cream/60">año del anuncio</div>
-                        </div>
-                    </div>
-
-                    <!-- Bullet Points -->
-                    <ul class="space-y-3 font-crimson text-cream/80">
-                        <li class="flex items-start gap-3">
-                            <span class="text-gold mt-1">◈</span>
-                            <span><strong class="text-gold-light">Ubicación:</strong> San Pablo Huitzo, Valle de Etla, Oaxaca</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-gold mt-1">◈</span>
-                            <span><strong class="text-gold-light">Periodo:</strong> Clásico Tardío (600-900 d.C.)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-gold mt-1">◈</span>
-                            <span><strong class="text-gold-light">Lo más destacado:</strong> Murales policromos y escultura del búho guardián</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-gold mt-1">◈</span>
-                            <span><strong class="text-gold-light">Apertura:</strong> Estimada para finales de 2026</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Quote Card -->
-                <div class="bg-jade/20 rounded-lg p-6 border-l-4 border-gold">
-                    <blockquote class="font-crimson text-lg italic text-cream/90">
-                        "El descubrimiento arqueológico más relevante de la última década en México"
-                    </blockquote>
-                    <cite class="block mt-3 text-sm text-cream/60 not-italic">
-                        — Gobierno de México, Enero 2026
-                    </cite>
-                </div>
-
-                <!-- CTA -->
-                <div class="text-center lg:text-left">
-                    <p class="font-crimson text-cream/70 mb-4">
-                        ¿Quieres saber más sobre la Tumba del Búho, los zapotecas o cómo visitar Huitzo?
-                    </p>
-                    <div class="inline-flex items-center gap-2 text-gold font-cinzel">
-                        <span class="text-2xl">→</span>
-                        <span>Pregúntale al asistente</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Right Column: Formmy Bot -->
-            <section class="lg:sticky lg:top-8 lg:self-start">
-                <div class="bg-night/80 rounded-lg border border-gold/20 border-glow overflow-hidden">
-                    <div class="bg-gradient-to-r from-gold/20 to-terracotta/20 px-6 py-4 border-b border-gold/20">
-                        <h3 class="font-cinzel text-xl text-gold flex items-center gap-3">
-                            <span>🦉</span>
-                            <span>Asistente de la Tumba</span>
-                        </h3>
-                        <p class="text-sm text-cream/60 mt-1">Pregunta lo que quieras sobre el descubrimiento</p>
-                    </div>
-
-                    <div id="formmy-widget" class="p-4">
-                        <!-- Formmy widget loads here -->
-                        <div class="flex items-center justify-center h-96 text-cream/40">
-                            <div class="text-center">
-                                <div class="text-4xl mb-4 animate-pulse">🦉</div>
-                                <p>Cargando asistente...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <!-- Ad Banner - Spot Principal -->
-    <section class="max-w-7xl mx-auto px-4 py-8">
-        <div class="bg-night/60 rounded-lg border-2 border-dashed border-gold/30 relative overflow-hidden group hover:border-gold/50 transition-colors">
-            <!-- Decorative corners -->
-            <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold/40 rounded-tl-lg"></div>
-            <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-gold/40 rounded-tr-lg"></div>
-            <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-gold/40 rounded-bl-lg"></div>
-            <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-gold/40 rounded-br-lg"></div>
-
-            <div class="p-8 md:p-12 text-center">
                 <!-- Icon -->
-                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gold/10 border border-gold/30 mb-6">
-                    <svg class="w-8 h-8 text-gold/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                    </svg>
-                </div>
+                <div id="owl-icon" class="animate-on-load text-5xl lg:text-6xl mb-4" role="img" aria-label="Búho">🦉</div>
 
-                <div class="text-xs uppercase tracking-[0.2em] text-gold/50 mb-3 font-cinzel">
-                    Espacio Disponible
-                </div>
+                <!-- Title -->
+                <h1 id="title" class="animate-on-load font-cinzel text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold gradient-text glow-gold mb-3 sm:mb-4">
+                    La Tumba del Búho
+                </h1>
 
-                <h4 class="font-cinzel text-2xl md:text-3xl text-cream/80 mb-3">
-                    Tu marca aquí
-                </h4>
-
-                <p class="font-crimson text-cream/50 max-w-md mx-auto mb-6">
-                    Ideal para agencias de viajes, hoteles boutique, tours arqueológicos o experiencias culturales en Oaxaca.
+                <!-- Subtitle -->
+                <p id="subtitle" class="animate-on-load font-crimson text-base sm:text-lg md:text-xl lg:text-2xl text-cream/70 max-w-2xl mb-4 sm:mb-6">
+                    El guardián del inframundo zapoteca resurge después de <span class="text-gold font-semibold">1,400 años</span>
                 </p>
 
-                <!-- Placeholder metrics -->
-                <div class="flex flex-wrap justify-center gap-8 mb-8 text-sm">
-                    <div class="text-center">
-                        <div class="text-gold/40 font-cinzel text-lg">728×90</div>
-                        <div class="text-cream/40 text-xs">Banner principal</div>
+                <!-- Key Info Pills -->
+                <div id="pills" class="animate-on-load flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8" role="list" aria-label="Datos clave del descubrimiento">
+                    <div role="listitem" class="bg-night/80 border border-gold/20 rounded-full px-3 sm:px-5 py-2 sm:py-3 flex items-center gap-1.5 sm:gap-2 text-sm sm:text-base">
+                        <span aria-hidden="true">📍</span>
+                        <span class="text-cream/60 font-crimson hidden sm:inline">Ubicación</span>
+                        <span class="text-gold font-cinzel">Huitzo, Oaxaca</span>
                     </div>
-                    <div class="text-center">
-                        <div class="text-gold/40 font-cinzel text-lg">Audiencia</div>
-                        <div class="text-cream/40 text-xs">Turismo cultural</div>
+                    <div role="listitem" class="bg-night/80 border border-gold/20 rounded-full px-3 sm:px-5 py-2 sm:py-3 flex items-center gap-1.5 sm:gap-2 text-sm sm:text-base">
+                        <span aria-hidden="true">⏳</span>
+                        <span class="text-cream/60 font-crimson hidden sm:inline">Periodo</span>
+                        <span class="text-gold font-cinzel">600-900 d.C.</span>
                     </div>
-                    <div class="text-center">
-                        <div class="text-gold/40 font-cinzel text-lg">Región</div>
-                        <div class="text-cream/40 text-xs">Oaxaca, México</div>
+                    <div role="listitem" class="bg-night/80 border border-gold/20 rounded-full px-3 sm:px-5 py-2 sm:py-3 flex items-center gap-1.5 sm:gap-2 text-sm sm:text-base">
+                        <span aria-hidden="true">🎨</span>
+                        <span class="text-cream/60 font-crimson hidden sm:inline">Destacado</span>
+                        <span class="text-gold font-cinzel">Murales</span>
                     </div>
                 </div>
 
-                <a href="mailto:hola@formmy.app?subject=Publicidad%20Tumba%20del%20Búho"
-                   class="inline-flex items-center gap-2 bg-gold/10 hover:bg-gold/20 border border-gold/40 hover:border-gold text-gold font-cinzel px-6 py-3 rounded transition-all">
-                    <span>Contactar</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                    </svg>
+                <!-- Quote -->
+                <blockquote id="quote" class="animate-on-load font-crimson text-base sm:text-lg lg:text-xl italic text-cream/50 max-w-2xl mb-6 sm:mb-8">
+                    "El descubrimiento arqueológico más relevante de la última década en México"
+                    <cite class="block mt-2 text-xs sm:text-sm text-gold/50 not-italic">— Gobierno de México</cite>
+                </blockquote>
+
+                <!-- CTA to chatbot -->
+                <div id="cta" class="animate-on-load flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-4 sm:mb-6">
+                    <p class="font-crimson text-base sm:text-lg text-cream/70">¿Tienes preguntas sobre la tumba?</p>
+                    <div class="flex items-center gap-2 text-gold font-cinzel text-base sm:text-lg">
+                        <span>Pregúntale al búho</span>
+                        <span id="arrow" class="text-xl" aria-hidden="true">↘</span>
+                    </div>
+                </div>
+
+                <!-- Footer inline -->
+                <div id="footer" class="animate-on-load flex flex-col gap-1.5 sm:gap-2 text-xs sm:text-sm text-cream/40">
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+                        <span>🤖 Agente IA creado con</span>
+                        <a href="https://formmy.app" target="_blank" rel="noopener" class="text-gold hover:text-gold-light font-cinzel font-semibold transition-colors">Formmy.app</a>
+                        <span class="hidden sm:inline mx-1">·</span>
+                        <span class="hidden sm:inline">con información del <a href="https://inah.gob.mx" target="_blank" rel="noopener" class="hover:text-gold transition-colors">INAH</a></span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span>📷</span>
+                        <span>Fotos: <a href="https://inah.gob.mx/boletines/el-gobierno-de-mexico-anuncia-el-descubrimiento-de-una-milenaria-tumba-zapoteca" target="_blank" rel="noopener" class="hover:text-gold transition-colors">INAH</a></span>
+                    </div>
+                </div>
+
+            </main>
+
+            <!-- Right: Bento Preview (2 cols) -->
+            <aside id="bento-preview" class="animate-on-load lg:col-span-2 grid grid-cols-2 gap-2 sm:gap-3 h-[280px] sm:h-[350px] md:h-[400px] lg:h-[500px]" aria-label="Vista previa de la galería">
+                <!-- Image 1 - Tall left: Búho guardián -->
+                <button
+                    type="button"
+                    class="row-span-2 rounded-xl overflow-hidden bento-img focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-obsidian"
+                    onclick="openLightbox(0)"
+                    aria-label="Ver imagen: El búho guardián del inframundo"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/fotodeldia/20260127_fotodia_27Enero.jpg"
+                        alt="Escultura del búho guardián con rostro de señor zapoteca bajo el pico, entrada de la Tumba 10 de Huitzo"
+                        width="600"
+                        height="800"
+                        loading="eager"
+                        decoding="async"
+                        class="w-full h-full object-cover"
+                    >
+                </button>
+                <!-- Image 2 - Top right: Entrada con jambas -->
+                <button
+                    type="button"
+                    class="rounded-xl overflow-hidden bento-img focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-obsidian"
+                    onclick="openLightbox(1)"
+                    aria-label="Ver imagen: Entrada de la tumba con jambas talladas"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/boletines/2026/30/foto_home.jpg"
+                        alt="Entrada de la Tumba 10 de Huitzo con jambas talladas mostrando figuras de guardianes zapotecas"
+                        width="600"
+                        height="400"
+                        loading="eager"
+                        decoding="async"
+                        class="w-full h-full object-cover"
+                    >
+                </button>
+                <!-- Image 3 - Bottom right: Dintel panorámico -->
+                <button
+                    type="button"
+                    class="rounded-xl overflow-hidden bento-img focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-obsidian"
+                    onclick="openLightbox(7)"
+                    aria-label="Ver imagen: Vista panorámica del dintel con el búho"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/boletines/2026/30/foto6.jpg"
+                        alt="Vista panorámica del dintel de la tumba mostrando el búho guardián y la arquitectura de la entrada"
+                        width="600"
+                        height="400"
+                        loading="eager"
+                        decoding="async"
+                        class="w-full h-full object-cover"
+                    >
+                </button>
+            </aside>
+
+        </div>
+
+        <!-- Scroll Hint -->
+        <div id="scroll-hint" class="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 text-center" aria-hidden="true">
+            <p class="text-cream/50 text-xs sm:text-sm mb-1 sm:mb-2 font-crimson">Explora la galería</p>
+            <span class="text-gold text-xl sm:text-2xl block">↓</span>
+        </div>
+
+    </section>
+
+    <!-- ============================================ -->
+    <!-- GALLERY SECTION                             -->
+    <!-- ============================================ -->
+    <section id="gallery" class="min-h-screen px-3 sm:px-6 md:px-12 lg:px-24 py-8 sm:py-12" aria-labelledby="gallery-title">
+
+        <!-- Mini Header Sticky -->
+        <header id="mini-header" class="sticky top-0 bg-obsidian/90 backdrop-blur-md py-3 sm:py-4 mb-4 sm:mb-8 z-10 -mx-3 sm:-mx-6 md:-mx-12 lg:-mx-24 px-3 sm:px-6 md:px-12 lg:px-24 border-b border-gold/10">
+            <div class="flex items-center justify-between">
+                <h2 id="gallery-title" class="font-cinzel text-lg sm:text-xl md:text-2xl text-gold flex items-center gap-2 sm:gap-3">
+                    <span aria-hidden="true">🦉</span>
+                    <span>La Tumba del Búho</span>
+                </h2>
+                <a href="#hero" class="text-cream/50 hover:text-gold transition-colors font-crimson flex items-center gap-1 sm:gap-2 text-sm sm:text-base">
+                    <span aria-hidden="true">↑</span>
+                    <span class="hidden sm:inline">Volver arriba</span>
+                    <span class="sm:hidden">Arriba</span>
                 </a>
             </div>
+        </header>
+
+        <!-- Gallery Grid -->
+        <div
+            id="gallery-grid"
+            class="columns-2 sm:columns-2 md:columns-3 lg:columns-4 gap-2 sm:gap-4"
+            role="list"
+            aria-label="Galería de imágenes de la Tumba del Búho"
+        >
+
+            <!-- Gallery Item 1: Búho guardián (foto del día) -->
+            <article class="gallery-item mb-2 sm:mb-4 rounded-lg sm:rounded-xl overflow-hidden relative" role="listitem">
+                <div class="skeleton absolute inset-0" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="w-full focus:outline-none"
+                    onclick="openLightbox(0)"
+                    aria-label="Ampliar: El búho guardián del inframundo"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/fotodeldia/20260127_fotodia_27Enero.jpg"
+                        alt="Escultura del búho guardián con rostro de señor zapoteca bajo el pico, entrada de la Tumba 10 de Huitzo"
+                        loading="lazy"
+                        decoding="async"
+                        class="gallery-img w-full h-auto"
+                        data-loaded="false"
+                        onload="this.dataset.loaded='true'; this.closest('.gallery-item').querySelector('.skeleton')?.remove()"
+                        onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1a1a%22 width=%22400%22 height=%22300%22/><text x=%22200%22 y=%22150%22 fill=%22%23d4a853%22 text-anchor=%22middle%22 font-size=%2216%22>Imagen no disponible</text></svg>'"
+                    >
+                </button>
+            </article>
+
+            <!-- Gallery Item 2: Entrada con jambas -->
+            <article class="gallery-item mb-2 sm:mb-4 rounded-lg sm:rounded-xl overflow-hidden relative" role="listitem">
+                <div class="skeleton absolute inset-0" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="w-full focus:outline-none"
+                    onclick="openLightbox(1)"
+                    aria-label="Ampliar: Entrada de la tumba con jambas talladas"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/boletines/2026/30/foto_home.jpg"
+                        alt="Entrada de la Tumba 10 de Huitzo con jambas talladas mostrando figuras de guardianes zapotecas"
+                        loading="lazy"
+                        decoding="async"
+                        class="gallery-img w-full h-auto"
+                        data-loaded="false"
+                        onload="this.dataset.loaded='true'; this.closest('.gallery-item').querySelector('.skeleton')?.remove()"
+                        onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1a1a%22 width=%22400%22 height=%22300%22/><text x=%22200%22 y=%22150%22 fill=%22%23d4a853%22 text-anchor=%22middle%22 font-size=%2216%22>Imagen no disponible</text></svg>'"
+                    >
+                </button>
+            </article>
+
+            <!-- Gallery Item 3: Arqueólogas trabajando -->
+            <article class="gallery-item mb-2 sm:mb-4 rounded-lg sm:rounded-xl overflow-hidden relative" role="listitem">
+                <div class="skeleton absolute inset-0" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="w-full focus:outline-none"
+                    onclick="openLightbox(2)"
+                    aria-label="Ampliar: Arqueólogas del INAH trabajando en la tumba"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/boletines/2026/30/foto1.jpg"
+                        alt="Arqueólogas del INAH documentando y trabajando cuidadosamente en el interior de la Tumba 10"
+                        loading="lazy"
+                        decoding="async"
+                        class="gallery-img w-full h-auto"
+                        data-loaded="false"
+                        onload="this.dataset.loaded='true'; this.closest('.gallery-item').querySelector('.skeleton')?.remove()"
+                        onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1a1a%22 width=%22400%22 height=%22300%22/><text x=%22200%22 y=%22150%22 fill=%22%23d4a853%22 text-anchor=%22middle%22 font-size=%2216%22>Imagen no disponible</text></svg>'"
+                    >
+                </button>
+            </article>
+
+            <!-- Gallery Item 4: Búho vista lateral -->
+            <article class="gallery-item mb-2 sm:mb-4 rounded-lg sm:rounded-xl overflow-hidden relative" role="listitem">
+                <div class="skeleton absolute inset-0" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="w-full focus:outline-none"
+                    onclick="openLightbox(3)"
+                    aria-label="Ampliar: Búho guardián vista lateral"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/boletines/2026/30/foto2.jpg"
+                        alt="Vista lateral del búho guardián mostrando los detalles de la escultura de estuco"
+                        loading="lazy"
+                        decoding="async"
+                        class="gallery-img w-full h-auto"
+                        data-loaded="false"
+                        onload="this.dataset.loaded='true'; this.closest('.gallery-item').querySelector('.skeleton')?.remove()"
+                        onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1a1a%22 width=%22400%22 height=%22300%22/><text x=%22200%22 y=%22150%22 fill=%22%23d4a853%22 text-anchor=%22middle%22 font-size=%2216%22>Imagen no disponible</text></svg>'"
+                    >
+                </button>
+            </article>
+
+            <!-- Gallery Item 5: Rostro bajo el pico -->
+            <article class="gallery-item mb-2 sm:mb-4 rounded-lg sm:rounded-xl overflow-hidden relative" role="listitem">
+                <div class="skeleton absolute inset-0" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="w-full focus:outline-none"
+                    onclick="openLightbox(4)"
+                    aria-label="Ampliar: Rostro del señor zapoteca bajo el pico del búho"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/boletines/2026/30/foto3.jpg"
+                        alt="Detalle del rostro estucado y pintado del señor zapoteca bajo el pico del búho guardián"
+                        loading="lazy"
+                        decoding="async"
+                        class="gallery-img w-full h-auto"
+                        data-loaded="false"
+                        onload="this.dataset.loaded='true'; this.closest('.gallery-item').querySelector('.skeleton')?.remove()"
+                        onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1a1a%22 width=%22400%22 height=%22300%22/><text x=%22200%22 y=%22150%22 fill=%22%23d4a853%22 text-anchor=%22middle%22 font-size=%2216%22>Imagen no disponible</text></svg>'"
+                    >
+                </button>
+            </article>
+
+            <!-- Gallery Item 6: Jamba con personaje -->
+            <article class="gallery-item mb-2 sm:mb-4 rounded-lg sm:rounded-xl overflow-hidden relative" role="listitem">
+                <div class="skeleton absolute inset-0" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="w-full focus:outline-none"
+                    onclick="openLightbox(5)"
+                    aria-label="Ampliar: Jamba con personaje tallado"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/boletines/2026/30/foto4.jpg"
+                        alt="Jamba de la entrada con figura tallada de personaje zapoteca funcionando como guardián simbólico"
+                        loading="lazy"
+                        decoding="async"
+                        class="gallery-img w-full h-auto"
+                        data-loaded="false"
+                        onload="this.dataset.loaded='true'; this.closest('.gallery-item').querySelector('.skeleton')?.remove()"
+                        onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1a1a%22 width=%22400%22 height=%22300%22/><text x=%22200%22 y=%22150%22 fill=%22%23d4a853%22 text-anchor=%22middle%22 font-size=%2216%22>Imagen no disponible</text></svg>'"
+                    >
+                </button>
+            </article>
+
+            <!-- Gallery Item 7: Búho y rostro close-up -->
+            <article class="gallery-item mb-2 sm:mb-4 rounded-lg sm:rounded-xl overflow-hidden relative" role="listitem">
+                <div class="skeleton absolute inset-0" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="w-full focus:outline-none"
+                    onclick="openLightbox(6)"
+                    aria-label="Ampliar: Búho y rostro en detalle"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/boletines/2026/30/foto5.jpg"
+                        alt="Acercamiento del búho guardián y el rostro del señor zapoteca con pigmentos rojo, ocre y blanco visibles"
+                        loading="lazy"
+                        decoding="async"
+                        class="gallery-img w-full h-auto"
+                        data-loaded="false"
+                        onload="this.dataset.loaded='true'; this.closest('.gallery-item').querySelector('.skeleton')?.remove()"
+                        onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1a1a%22 width=%22400%22 height=%22300%22/><text x=%22200%22 y=%22150%22 fill=%22%23d4a853%22 text-anchor=%22middle%22 font-size=%2216%22>Imagen no disponible</text></svg>'"
+                    >
+                </button>
+            </article>
+
+            <!-- Gallery Item 8: Dintel panorámico -->
+            <article class="gallery-item mb-2 sm:mb-4 rounded-lg sm:rounded-xl overflow-hidden relative" role="listitem">
+                <div class="skeleton absolute inset-0" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="w-full focus:outline-none"
+                    onclick="openLightbox(7)"
+                    aria-label="Ampliar: Vista panorámica del dintel con el búho"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/boletines/2026/30/foto6.jpg"
+                        alt="Vista panorámica del dintel de la tumba mostrando el búho guardián y la arquitectura de la entrada"
+                        loading="lazy"
+                        decoding="async"
+                        class="gallery-img w-full h-auto"
+                        data-loaded="false"
+                        onload="this.dataset.loaded='true'; this.closest('.gallery-item').querySelector('.skeleton')?.remove()"
+                        onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1a1a%22 width=%22400%22 height=%22300%22/><text x=%22200%22 y=%22150%22 fill=%22%23d4a853%22 text-anchor=%22middle%22 font-size=%2216%22>Imagen no disponible</text></svg>'"
+                    >
+                </button>
+            </article>
+
+            <!-- Gallery Item 9: Jamba con ancestro y tocado -->
+            <article class="gallery-item mb-2 sm:mb-4 rounded-lg sm:rounded-xl overflow-hidden relative" role="listitem">
+                <div class="skeleton absolute inset-0" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="w-full focus:outline-none"
+                    onclick="openLightbox(8)"
+                    aria-label="Ampliar: Jamba con ancestro y tocado elaborado"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/boletines/2026/30/foto7.jpg"
+                        alt="Jamba con figura tallada de ancestro zapoteca portando tocado elaborado, posible representación de linaje"
+                        loading="lazy"
+                        decoding="async"
+                        class="gallery-img w-full h-auto"
+                        data-loaded="false"
+                        onload="this.dataset.loaded='true'; this.closest('.gallery-item').querySelector('.skeleton')?.remove()"
+                        onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1a1a%22 width=%22400%22 height=%22300%22/><text x=%22200%22 y=%22150%22 fill=%22%23d4a853%22 text-anchor=%22middle%22 font-size=%2216%22>Imagen no disponible</text></svg>'"
+                    >
+                </button>
+            </article>
+
+            <!-- ========== BOLETÍN 40: VISITA OFICIAL ========== -->
+
+            <!-- Gallery Item 10: Secretaria y Gobernador frente al búho -->
+            <article class="gallery-item mb-2 sm:mb-4 rounded-lg sm:rounded-xl overflow-hidden relative" role="listitem">
+                <div class="skeleton absolute inset-0" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="w-full focus:outline-none"
+                    onclick="openLightbox(9)"
+                    aria-label="Ampliar: Secretaria de Cultura y Gobernador frente al búho"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/boletines/2026/40/foto_home.jpg"
+                        alt="Secretaria de Cultura Claudia Curiel de Icaza y Gobernador Salomón Jara observando el búho guardián durante visita oficial"
+                        loading="lazy"
+                        decoding="async"
+                        class="gallery-img w-full h-auto"
+                        data-loaded="false"
+                        onload="this.dataset.loaded='true'; this.closest('.gallery-item').querySelector('.skeleton')?.remove()"
+                        onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1a1a%22 width=%22400%22 height=%22300%22/><text x=%22200%22 y=%22150%22 fill=%22%23d4a853%22 text-anchor=%22middle%22 font-size=%2216%22>Imagen no disponible</text></svg>'"
+                    >
+                </button>
+            </article>
+
+            <!-- Gallery Item 11: Búho guardián ángulo frontal -->
+            <article class="gallery-item mb-2 sm:mb-4 rounded-lg sm:rounded-xl overflow-hidden relative" role="listitem">
+                <div class="skeleton absolute inset-0" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="w-full focus:outline-none"
+                    onclick="openLightbox(10)"
+                    aria-label="Ampliar: Búho guardián vista frontal"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/boletines/2026/40/foto1.jpg"
+                        alt="Búho guardián de la Tumba 10 visto desde ángulo frontal mostrando detalles del estuco policromado"
+                        loading="lazy"
+                        decoding="async"
+                        class="gallery-img w-full h-auto"
+                        data-loaded="false"
+                        onload="this.dataset.loaded='true'; this.closest('.gallery-item').querySelector('.skeleton')?.remove()"
+                        onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1a1a%22 width=%22400%22 height=%22300%22/><text x=%22200%22 y=%22150%22 fill=%22%23d4a853%22 text-anchor=%22middle%22 font-size=%2216%22>Imagen no disponible</text></svg>'"
+                    >
+                </button>
+            </article>
+
+            <!-- Gallery Item 12: Funcionarios observando el búho -->
+            <article class="gallery-item mb-2 sm:mb-4 rounded-lg sm:rounded-xl overflow-hidden relative" role="listitem">
+                <div class="skeleton absolute inset-0" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="w-full focus:outline-none"
+                    onclick="openLightbox(11)"
+                    aria-label="Ampliar: Funcionarios observando el búho guardián"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/boletines/2026/40/foto2.jpg"
+                        alt="Funcionarios federales y estatales observando el búho guardián durante recorrido por la Tumba 10"
+                        loading="lazy"
+                        decoding="async"
+                        class="gallery-img w-full h-auto"
+                        data-loaded="false"
+                        onload="this.dataset.loaded='true'; this.closest('.gallery-item').querySelector('.skeleton')?.remove()"
+                        onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1a1a%22 width=%22400%22 height=%22300%22/><text x=%22200%22 y=%22150%22 fill=%22%23d4a853%22 text-anchor=%22middle%22 font-size=%2216%22>Imagen no disponible</text></svg>'"
+                    >
+                </button>
+            </article>
+
+            <!-- Gallery Item 13: Vista del sitio con visitantes -->
+            <article class="gallery-item mb-2 sm:mb-4 rounded-lg sm:rounded-xl overflow-hidden relative" role="listitem">
+                <div class="skeleton absolute inset-0" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="w-full focus:outline-none"
+                    onclick="openLightbox(12)"
+                    aria-label="Ampliar: Vista del sitio arqueológico con visitantes"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/boletines/2026/40/foto3.jpg"
+                        alt="Vista general del sitio arqueológico de Huitzo con visitantes durante la visita oficial"
+                        loading="lazy"
+                        decoding="async"
+                        class="gallery-img w-full h-auto"
+                        data-loaded="false"
+                        onload="this.dataset.loaded='true'; this.closest('.gallery-item').querySelector('.skeleton')?.remove()"
+                        onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1a1a%22 width=%22400%22 height=%22300%22/><text x=%22200%22 y=%22150%22 fill=%22%23d4a853%22 text-anchor=%22middle%22 font-size=%2216%22>Imagen no disponible</text></svg>'"
+                    >
+                </button>
+            </article>
+
+            <!-- Gallery Item 14: Sitio con comunidad local -->
+            <article class="gallery-item mb-2 sm:mb-4 rounded-lg sm:rounded-xl overflow-hidden relative" role="listitem">
+                <div class="skeleton absolute inset-0" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="w-full focus:outline-none"
+                    onclick="openLightbox(13)"
+                    aria-label="Ampliar: Sitio arqueológico con comunidad local"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/boletines/2026/40/foto4.jpg"
+                        alt="Comunidad local de Huitzo participando en la visita oficial al sitio arqueológico"
+                        loading="lazy"
+                        decoding="async"
+                        class="gallery-img w-full h-auto"
+                        data-loaded="false"
+                        onload="this.dataset.loaded='true'; this.closest('.gallery-item').querySelector('.skeleton')?.remove()"
+                        onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1a1a%22 width=%22400%22 height=%22300%22/><text x=%22200%22 y=%22150%22 fill=%22%23d4a853%22 text-anchor=%22middle%22 font-size=%2216%22>Imagen no disponible</text></svg>'"
+                    >
+                </button>
+            </article>
+
+            <!-- Gallery Item 15: Secretaria bajando a la tumba -->
+            <article class="gallery-item mb-2 sm:mb-4 rounded-lg sm:rounded-xl overflow-hidden relative" role="listitem">
+                <div class="skeleton absolute inset-0" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="w-full focus:outline-none"
+                    onclick="openLightbox(14)"
+                    aria-label="Ampliar: Secretaria de Cultura descendiendo a la tumba"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/boletines/2026/40/foto5.jpg"
+                        alt="Secretaria de Cultura Claudia Curiel de Icaza descendiendo por la escalinata hacia la Tumba 10"
+                        loading="lazy"
+                        decoding="async"
+                        class="gallery-img w-full h-auto"
+                        data-loaded="false"
+                        onload="this.dataset.loaded='true'; this.closest('.gallery-item').querySelector('.skeleton')?.remove()"
+                        onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1a1a%22 width=%22400%22 height=%22300%22/><text x=%22200%22 y=%22150%22 fill=%22%23d4a853%22 text-anchor=%22middle%22 font-size=%2216%22>Imagen no disponible</text></svg>'"
+                    >
+                </button>
+            </article>
+
+            <!-- Gallery Item 16: Close-up pico del búho -->
+            <article class="gallery-item mb-2 sm:mb-4 rounded-lg sm:rounded-xl overflow-hidden relative" role="listitem">
+                <div class="skeleton absolute inset-0" aria-hidden="true"></div>
+                <button
+                    type="button"
+                    class="w-full focus:outline-none"
+                    onclick="openLightbox(15)"
+                    aria-label="Ampliar: Detalle del pico del búho guardián"
+                >
+                    <img
+                        src="https://inah.gob.mx/images/boletines/2026/40/foto6.jpg"
+                        alt="Acercamiento al pico del búho guardián mostrando los detalles del estuco y pigmentos originales"
+                        loading="lazy"
+                        decoding="async"
+                        class="gallery-img w-full h-auto"
+                        data-loaded="false"
+                        onload="this.dataset.loaded='true'; this.closest('.gallery-item').querySelector('.skeleton')?.remove()"
+                        onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%231a1a1a%22 width=%22400%22 height=%22300%22/><text x=%22200%22 y=%22150%22 fill=%22%23d4a853%22 text-anchor=%22middle%22 font-size=%2216%22>Imagen no disponible</text></svg>'"
+                    >
+                </button>
+            </article>
+
         </div>
-    </section>
 
-    <!-- Secondary Info Section -->
-    <section class="max-w-7xl mx-auto px-4 py-8">
-        <div class="grid md:grid-cols-3 gap-6">
-            <!-- Card 1 -->
-            <div class="bg-night/60 rounded-lg p-6 border border-gold/10 hover:border-gold/30 transition-colors">
-                <div class="text-3xl mb-3">🏛️</div>
-                <h4 class="font-cinzel text-lg text-gold mb-2">Cultura Zapoteca</h4>
-                <p class="font-crimson text-sm text-cream/70">
-                    Los Binnizá, "gente de las nubes", crearon una de las civilizaciones más avanzadas de Mesoamérica.
-                </p>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="bg-night/60 rounded-lg p-6 border border-gold/10 hover:border-gold/30 transition-colors">
-                <div class="text-3xl mb-3">🎨</div>
-                <h4 class="font-cinzel text-lg text-gold mb-2">Murales Únicos</h4>
-                <p class="font-crimson text-sm text-cream/70">
-                    Pinturas policromas que narran procesiones rituales con figuras portando copal sagrado.
-                </p>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="bg-night/60 rounded-lg p-6 border border-gold/10 hover:border-gold/30 transition-colors">
-                <div class="text-3xl mb-3">🗺️</div>
-                <h4 class="font-cinzel text-lg text-gold mb-2">Valle de Etla</h4>
-                <p class="font-crimson text-sm text-cream/70">
-                    A solo 38 km de Oaxaca capital, en una región rica en historia y tradiciones vivas.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="border-t border-gold/20 mt-12">
-        <div class="max-w-7xl mx-auto px-4 py-8">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-
-                <!-- Powered by -->
-                <div class="flex items-center gap-3">
-                    <span class="text-cream/60 text-sm">Chatbot creado con</span>
-                    <a href="https://formmy.app"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="inline-flex items-center gap-2 bg-gold/10 hover:bg-gold/20 border border-gold/30 rounded-full px-4 py-2 transition-colors">
-                        <span class="text-gold font-cinzel font-bold">Formmy.app</span>
-                        <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                        </svg>
-                    </a>
-                </div>
-
-                <!-- Links -->
-                <div class="flex items-center gap-6 text-sm text-cream/50">
-                    <a href="https://inah.gob.mx" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition-colors">
-                        INAH
-                    </a>
-                    <a href="https://www.oaxaca.gob.mx" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition-colors">
-                        Gobierno de Oaxaca
-                    </a>
-                    <span class="text-cream/30">|</span>
-                    <span>Demo 2026</span>
-                </div>
-            </div>
-
-            <!-- Small ad space - Spot Secundario -->
-            <div class="mt-8 pt-6 border-t border-gold/10">
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
-                    <div class="flex items-center gap-3 px-4 py-2 rounded border border-dashed border-gold/20 bg-gold/5">
-                        <div class="w-6 h-6 rounded bg-gold/10 flex items-center justify-center">
-                            <span class="text-gold/40 text-xs">Ad</span>
-                        </div>
-                        <span class="text-xs text-cream/40">Espacio disponible</span>
-                    </div>
-                    <a href="mailto:hola@formmy.app?subject=Patrocinio%20Tumba%20del%20Búho"
-                       class="text-xs text-gold/50 hover:text-gold transition-colors flex items-center gap-1">
-                        <span>Patrocinar este sitio</span>
-                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Copyright -->
-        <div class="bg-obsidian/50 py-4 text-center">
-            <p class="text-xs text-cream/30">
-                Contenido informativo basado en fuentes oficiales del INAH y Gobierno de México.
-                Esta es una demo de <a href="https://formmy.app" class="text-gold/50 hover:text-gold">Formmy.app</a>
+        <!-- Gallery Footer -->
+        <footer class="mt-8 sm:mt-16 pt-6 sm:pt-8 border-t border-gold/10 text-center">
+            <p class="font-crimson text-cream/50 mb-2 text-sm sm:text-base">
+                La tumba abrirá al público a finales de 2026
             </p>
-        </div>
-    </footer>
+            <p class="text-xs sm:text-sm text-cream/40 mb-3 sm:mb-4">
+                📷 Fotos: <a href="https://inah.gob.mx/boletines/el-gobierno-de-mexico-anuncia-el-descubrimiento-de-una-milenaria-tumba-zapoteca" target="_blank" rel="noopener" class="hover:text-gold transition-colors">INAH</a>
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-cream/40">
+                <span>🤖 Agente IA creado con</span>
+                <a href="https://formmy.app" target="_blank" rel="noopener" class="text-gold hover:text-gold-light font-cinzel font-semibold transition-colors">Formmy.app</a>
+                <span class="mx-1">·</span>
+                <span>con información del <a href="https://inah.gob.mx" target="_blank" rel="noopener" class="hover:text-gold transition-colors">INAH</a></span>
+            </div>
+        </footer>
 
-    <!-- Formmy Widget Script -->
+    </section>
+
+    <!-- ============================================ -->
+    <!-- LIGHTBOX                                    -->
+    <!-- ============================================ -->
+    <div
+        id="lightbox"
+        class="lightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Visor de imágenes"
+        aria-hidden="true"
+    >
+        <!-- Top bar: counter + close -->
+        <div class="lightbox-topbar">
+            <span id="lightbox-counter" class="lightbox-counter" aria-live="polite"></span>
+            <button
+                type="button"
+                id="lightbox-close"
+                class="lightbox-close"
+                aria-label="Cerrar visor (Escape)"
+            >✕</button>
+        </div>
+
+        <!-- Click zones on sides -->
+        <div
+            class="lightbox-zone lightbox-zone-prev"
+            onclick="prevImage()"
+            aria-hidden="true"
+        >
+            <span class="lightbox-zone-icon">‹</span>
+        </div>
+        <div
+            class="lightbox-zone lightbox-zone-next"
+            onclick="nextImage()"
+            aria-hidden="true"
+        >
+            <span class="lightbox-zone-icon">›</span>
+        </div>
+
+        <!-- Image container -->
+        <div class="lightbox-content">
+            <img
+                id="lightbox-img"
+                class="lightbox-img"
+                src=""
+                alt=""
+            >
+        </div>
+
+        <!-- Bottom bar: caption + nav buttons -->
+        <div class="lightbox-bottombar">
+            <p id="lightbox-caption" class="lightbox-caption"></p>
+            <div class="lightbox-nav-container">
+                <button
+                    type="button"
+                    id="lightbox-prev"
+                    class="lightbox-nav"
+                    aria-label="Imagen anterior (flecha izquierda)"
+                >‹</button>
+                <button
+                    type="button"
+                    id="lightbox-next"
+                    class="lightbox-nav"
+                    aria-label="Imagen siguiente (flecha derecha)"
+                >›</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SCRIPTS                                     -->
+    <!-- ============================================ -->
+    <script>
+        // ========== GALLERY DATA ==========
+        const galleryImages = [
+            {
+                src: 'https://inah.gob.mx/images/fotodeldia/20260127_fotodia_27Enero.jpg',
+                alt: 'Escultura del búho guardián con rostro de señor zapoteca bajo el pico, entrada de la Tumba 10 de Huitzo',
+                caption: 'El búho guardián del inframundo · Foto: Luis Gerardo Peña Torres / INAH'
+            },
+            {
+                src: 'https://inah.gob.mx/images/boletines/2026/30/foto_home.jpg',
+                alt: 'Entrada de la Tumba 10 de Huitzo con jambas talladas mostrando figuras de guardianes zapotecas',
+                caption: 'Entrada de la tumba con jambas talladas · Foto: Luis Gerardo Peña Torres / INAH'
+            },
+            {
+                src: 'https://inah.gob.mx/images/boletines/2026/30/foto1.jpg',
+                alt: 'Arqueólogas del INAH documentando y trabajando cuidadosamente en el interior de la Tumba 10',
+                caption: 'Arqueólogas del INAH trabajando en la tumba · Foto: Luis Gerardo Peña Torres / INAH'
+            },
+            {
+                src: 'https://inah.gob.mx/images/boletines/2026/30/foto2.jpg',
+                alt: 'Vista lateral del búho guardián mostrando los detalles de la escultura de estuco',
+                caption: 'Búho guardián, vista lateral · Foto: Luis Gerardo Peña Torres / INAH'
+            },
+            {
+                src: 'https://inah.gob.mx/images/boletines/2026/30/foto3.jpg',
+                alt: 'Detalle del rostro estucado y pintado del señor zapoteca bajo el pico del búho guardián',
+                caption: 'Rostro del señor zapoteca bajo el pico del búho · Foto: Luis Gerardo Peña Torres / INAH'
+            },
+            {
+                src: 'https://inah.gob.mx/images/boletines/2026/30/foto4.jpg',
+                alt: 'Jamba de la entrada con figura tallada de personaje zapoteca funcionando como guardián simbólico',
+                caption: 'Jamba con personaje tallado · Foto: Luis Gerardo Peña Torres / INAH'
+            },
+            {
+                src: 'https://inah.gob.mx/images/boletines/2026/30/foto5.jpg',
+                alt: 'Acercamiento del búho guardián y el rostro del señor zapoteca con pigmentos rojo, ocre y blanco visibles',
+                caption: 'Detalle del búho y rostro con pigmentos originales · Foto: Luis Gerardo Peña Torres / INAH'
+            },
+            {
+                src: 'https://inah.gob.mx/images/boletines/2026/30/foto6.jpg',
+                alt: 'Vista panorámica del dintel de la tumba mostrando el búho guardián y la arquitectura de la entrada',
+                caption: 'Vista panorámica del dintel · Foto: Luis Gerardo Peña Torres / INAH'
+            },
+            {
+                src: 'https://inah.gob.mx/images/boletines/2026/30/foto7.jpg',
+                alt: 'Jamba con figura tallada de ancestro zapoteca portando tocado elaborado, posible representación de linaje',
+                caption: 'Jamba con ancestro y tocado · Foto: Luis Gerardo Peña Torres / INAH'
+            },
+            // Boletín 40: Visita oficial
+            {
+                src: 'https://inah.gob.mx/images/boletines/2026/40/foto_home.jpg',
+                alt: 'Secretaria de Cultura Claudia Curiel de Icaza y Gobernador Salomón Jara observando el búho guardián durante visita oficial',
+                caption: 'Visita oficial: Secretaria de Cultura y Gobernador de Oaxaca · Foto: INAH'
+            },
+            {
+                src: 'https://inah.gob.mx/images/boletines/2026/40/foto1.jpg',
+                alt: 'Búho guardián de la Tumba 10 visto desde ángulo frontal mostrando detalles del estuco policromado',
+                caption: 'Búho guardián, vista frontal · Foto: INAH'
+            },
+            {
+                src: 'https://inah.gob.mx/images/boletines/2026/40/foto2.jpg',
+                alt: 'Funcionarios federales y estatales observando el búho guardián durante recorrido por la Tumba 10',
+                caption: 'Funcionarios recorriendo la Tumba 10 · Foto: INAH'
+            },
+            {
+                src: 'https://inah.gob.mx/images/boletines/2026/40/foto3.jpg',
+                alt: 'Vista general del sitio arqueológico de Huitzo con visitantes durante la visita oficial',
+                caption: 'Vista del sitio arqueológico durante la visita · Foto: INAH'
+            },
+            {
+                src: 'https://inah.gob.mx/images/boletines/2026/40/foto4.jpg',
+                alt: 'Comunidad local de Huitzo participando en la visita oficial al sitio arqueológico',
+                caption: 'Comunidad de Huitzo en la visita oficial · Foto: INAH'
+            },
+            {
+                src: 'https://inah.gob.mx/images/boletines/2026/40/foto5.jpg',
+                alt: 'Secretaria de Cultura Claudia Curiel de Icaza descendiendo por la escalinata hacia la Tumba 10',
+                caption: 'Secretaria de Cultura descendiendo a la tumba · Foto: INAH'
+            },
+            {
+                src: 'https://inah.gob.mx/images/boletines/2026/40/foto6.jpg',
+                alt: 'Acercamiento al pico del búho guardián mostrando los detalles del estuco y pigmentos originales',
+                caption: 'Detalle del pico del búho guardián · Foto: INAH'
+            }
+        ];
+
+        let currentIndex = 0;
+        let previouslyFocusedElement = null;
+
+        // ========== LIGHTBOX FUNCTIONS ==========
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+
+        function openLightbox(index) {
+            previouslyFocusedElement = document.activeElement;
+            currentIndex = index;
+            updateLightboxContent();
+            lightbox.classList.add('active');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            lightboxClose.focus();
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            if (previouslyFocusedElement) {
+                previouslyFocusedElement.focus();
+            }
+        }
+
+        function updateLightboxContent() {
+            const img = galleryImages[currentIndex];
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightboxCaption.textContent = img.caption;
+            lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % galleryImages.length;
+            updateLightboxContent();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateLightboxContent();
+        }
+
+        // Event listeners
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxNext.addEventListener('click', nextImage);
+        lightboxPrev.addEventListener('click', prevImage);
+
+        // Close on backdrop click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+
+            switch (e.key) {
+                case 'Escape':
+                    closeLightbox();
+                    break;
+                case 'ArrowRight':
+                    nextImage();
+                    break;
+                case 'ArrowLeft':
+                    prevImage();
+                    break;
+                case 'Tab':
+                    // Trap focus within lightbox
+                    const focusableElements = [lightboxClose, lightboxPrev, lightboxNext];
+                    const firstEl = focusableElements[0];
+                    const lastEl = focusableElements[focusableElements.length - 1];
+
+                    if (e.shiftKey && document.activeElement === firstEl) {
+                        e.preventDefault();
+                        lastEl.focus();
+                    } else if (!e.shiftKey && document.activeElement === lastEl) {
+                        e.preventDefault();
+                        firstEl.focus();
+                    }
+                    break;
+            }
+        });
+
+        // Touch/swipe navigation for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const minSwipeDistance = 50;
+
+        lightbox.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        lightbox.addEventListener('touchend', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            touchEndX = e.changedTouches[0].screenX;
+            const swipeDistance = touchEndX - touchStartX;
+
+            if (Math.abs(swipeDistance) > minSwipeDistance) {
+                if (swipeDistance > 0) {
+                    prevImage();
+                } else {
+                    nextImage();
+                }
+            }
+        }, { passive: true });
+
+        // ========== MOTION ANIMATIONS ==========
+        const { animate, stagger, inView, scroll } = Motion;
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Hero animations
+            animate('#owl-icon',
+                { opacity: [0, 1], y: [-30, 0] },
+                { duration: 0.8, easing: 'ease-out' }
+            );
+
+            animate('#title',
+                { opacity: [0, 1], x: [-50, 0] },
+                { duration: 0.8, delay: 0.2, easing: 'ease-out' }
+            );
+
+            animate('#subtitle',
+                { opacity: [0, 1], x: [-30, 0] },
+                { duration: 0.8, delay: 0.4, easing: 'ease-out' }
+            );
+
+            animate('#pills',
+                { opacity: [0, 1], y: [20, 0] },
+                { duration: 0.6, delay: 0.6, easing: 'ease-out' }
+            );
+
+            animate('#quote',
+                { opacity: [0, 1] },
+                { duration: 0.8, delay: 0.8, easing: 'ease-out' }
+            );
+
+            animate('#cta',
+                { opacity: [0, 1], y: [20, 0] },
+                { duration: 0.6, delay: 1, easing: 'ease-out' }
+            );
+
+            animate('#footer',
+                { opacity: [0, 1] },
+                { duration: 0.6, delay: 1.2, easing: 'ease-out' }
+            );
+
+            animate('#bento-preview',
+                { opacity: [0, 1], scale: [0.95, 1] },
+                { duration: 0.8, delay: 0.5, easing: 'ease-out' }
+            );
+
+            // Arrow bounce
+            animate('#arrow',
+                { x: [0, 5, 0], y: [0, 5, 0] },
+                { duration: 1.5, repeat: Infinity, easing: 'ease-in-out', delay: 1.5 }
+            );
+
+            // Owl float
+            setTimeout(() => {
+                animate('#owl-icon',
+                    { y: [0, -8, 0] },
+                    { duration: 3, repeat: Infinity, easing: 'ease-in-out' }
+                );
+            }, 1500);
+
+            // Scroll hint pulse
+            animate('#scroll-hint',
+                { opacity: [0.5, 1, 0.5], y: [0, 5, 0] },
+                { duration: 2, repeat: Infinity, easing: 'ease-in-out', delay: 1.5 }
+            );
+
+            // Fade scroll hint on scroll
+            scroll(
+                animate('#scroll-hint', { opacity: 0, pointerEvents: 'none' }),
+                {
+                    target: document.querySelector('#hero'),
+                    offset: ['start start', '0.15 start']
+                }
+            );
+
+            // Gallery items stagger in
+            inView('#gallery-grid', () => {
+                animate('.gallery-item',
+                    { opacity: [0, 1], y: [30, 0] },
+                    { delay: stagger(0.06), duration: 0.4, easing: 'ease-out' }
+                );
+            }, { margin: '-50px' });
+
+        });
+    </script>
+
+    <!-- Formmy Widget -->
     <script type="module">
         import Chatbot from "https://formmy.app/widget.js"
         Chatbot.init({
