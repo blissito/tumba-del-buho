@@ -258,3 +258,14 @@ Foto del búho: https://inah.gob.mx/images/fotodeldia/20260127_fotodia_27Enero.j
 El interior de la Tumba 10 de Huitzo muestra una cámara funeraria con bóveda escalonada de piedra caliza. Las paredes tienen restos de murales policromos en colores ocre, blanco, verde, rojo y azul. La técnica constructiva zapoteca es visible en el techo abovedado. El recubrimiento interior es de estuco.
 Foto entrada con jambas: https://inah.gob.mx/images/boletines/2026/30/foto_home.jpg
 Foto interior: https://inah.gob.mx/images/boletines/2026/30/foto2.jpg
+
+---
+
+## ¿Hay videos de la Tumba 10 de Huitzo?
+
+Sí, hay videos sobre el descubrimiento de la Tumba 10 de Huitzo. El video oficial del INAH se presentó en la conferencia mañanera del 23 de enero de 2026. También hay reportajes en medios de comunicación.
+Video N+ Noticias: https://www.nmas.com.mx/nacional/inah-descubre-tumba-huitzo-en-oaxaca-asi-es-el-hallazgo-zapoteco-mas-relevante-en-ultima-decada/
+Video El Universal Oaxaca: https://oaxaca.eluniversal.com.mx/estatal/historico-descubren-tumba-zapoteca-con-mas-de-mil-400-anos-de-antiguedad-en-huitzo-oaxaca/
+Video La Onda Oaxaca: https://www.laondaoaxaca.com.mx/2026/01/demuestra-tumba-10-de-huitzo-que-oaxaca-es-cuna-de-una-de-las-civilizaciones-fundamentales-de-mesoamerica-salomon-jara-video/
+Twitter INAH oficial: https://twitter.com/INAHmx
+Twitter Secretaría de Cultura: https://twitter.com/cultura_mx
