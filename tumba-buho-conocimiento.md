@@ -263,9 +263,60 @@ Foto interior: https://inah.gob.mx/images/boletines/2026/30/foto2.jpg
 
 ## ¿Hay videos de la Tumba 10 de Huitzo?
 
-Sí, hay videos sobre el descubrimiento de la Tumba 10 de Huitzo. El video oficial del INAH se presentó en la conferencia mañanera del 23 de enero de 2026. También hay reportajes en medios de comunicación.
-Video N+ Noticias: https://www.nmas.com.mx/nacional/inah-descubre-tumba-huitzo-en-oaxaca-asi-es-el-hallazgo-zapoteco-mas-relevante-en-ultima-decada/
-Video El Universal Oaxaca: https://oaxaca.eluniversal.com.mx/estatal/historico-descubren-tumba-zapoteca-con-mas-de-mil-400-anos-de-antiguedad-en-huitzo-oaxaca/
-Video La Onda Oaxaca: https://www.laondaoaxaca.com.mx/2026/01/demuestra-tumba-10-de-huitzo-que-oaxaca-es-cuna-de-una-de-las-civilizaciones-fundamentales-de-mesoamerica-salomon-jara-video/
-Twitter INAH oficial: https://twitter.com/INAHmx
-Twitter Secretaría de Cultura: https://twitter.com/cultura_mx
+Sí, hay varios videos en YouTube sobre el descubrimiento de la Tumba 10 de Huitzo. El video oficial es de la Secretaría de Cultura de México. También hay reportajes de Aristegui Noticias, MILENIO, N+, La Jornada, Canal 13 Oaxaca, SinEmbargo y Culturas 22.
+
+---
+
+## Video oficial de la Tumba 10 de Huitzo
+
+Video oficial de la Secretaría de Cultura de México sobre el descubrimiento de la Tumba 10 de Huitzo. Título: "El descubrimiento arqueológico más importante en la última década: Tumba 10 de Huitzo".
+https://www.youtube.com/watch?v=IZBygI2pZBE
+
+---
+
+## Video Aristegui Noticias - Tumba zapoteca
+
+Reportaje de Aristegui Noticias sobre la Tumba 10 de Huitzo. Título: "Así es la tumba zapoteca descubierta en Oaxaca: pintura mural y símbolos de poder y muerte". Incluye análisis de los murales y el simbolismo.
+https://www.youtube.com/watch?v=Uv9cyE8tf7Y
+
+---
+
+## Video MILENIO - Sheinbaum presenta la Tumba 10
+
+Cobertura de MILENIO del anuncio presidencial. Título: "Sheinbaum presenta el histórico hallazgo de la Tumba 10 de Huitzo". Muestra la presentación oficial del descubrimiento.
+https://www.youtube.com/watch?v=eREubIYYO_4
+
+---
+
+## Video N+ En Punto - INAH descubre tumba zapoteca
+
+Reportaje de N+ En Punto sobre el descubrimiento. Título: "INAH da a conocer el descubrimiento de una tumba zapoteca en Oaxaca". Cobertura noticiosa del hallazgo.
+https://www.youtube.com/watch?v=cX0rgOwZZzs
+
+---
+
+## Video La Jornada - Apertura de la Tumba 10
+
+Reportaje de La Jornada sobre la futura apertura al público. Título: "A fin de año, la Tumba 10 en Huitzo revelará al público el esplendor de sus murales y arquitectura".
+https://www.youtube.com/watch?v=h8mpxCQUT5M
+
+---
+
+## Video Canal 13 Oaxaca - Tumba 10 joya zapoteca
+
+Cobertura local de Canal 13 Oaxaca. Título: "Descubren la tumba 10 de Huitzo, joya zapoteca del siglo VII". Perspectiva oaxaqueña del descubrimiento.
+https://www.youtube.com/watch?v=lHH-rPnTZbQ
+
+---
+
+## Video SinEmbargo - Hallazgo histórico zapoteca
+
+Reportaje de SinEmbargo Al Aire. Título: "Claudia Sheinbaum informó hallazgo histórico de cultura zapoteca, la Tumba 10 de Huitzo en Oaxaca".
+https://www.youtube.com/watch?v=rOXmUQrKnOw
+
+---
+
+## Video Culturas 22 - Tumba milenaria en Huitzo
+
+Reportaje de Culturas 22 sobre el hallazgo. Título: "Hallazgo histórico: descubren tumba milenaria zapoteca en San Pablo Huitzo".
+https://www.youtube.com/watch?v=BawN1sBNlyM
