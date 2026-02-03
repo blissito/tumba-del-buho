@@ -4,6 +4,8 @@
 
 La Tumba 10 de Huitzo, conocida como "La Tumba del Búho", es una tumba zapoteca de aproximadamente 1,400 años de antigüedad. Fue descubierta en San Pablo Huitzo, Oaxaca, México. El gobierno de México la anunció oficialmente el 23 de enero de 2026. La presidenta Claudia Sheinbaum presentó el hallazgo. Es considerada el descubrimiento arqueológico más relevante de la última década en México. La tumba debe su nombre a una impresionante escultura de búho en su entrada. El búho simboliza la noche y la muerte en la cosmovisión zapoteca.
 
+Este hallazgo es extraordinario por varias razones: la escultura del búho guardián es única en la arqueología mesoamericana, no existe otra igual. Los murales policromos están excepcionalmente conservados después de 1,400 años, algo muy raro en tumbas zapotecas. Solo la famosa Tumba 7 de Monte Albán, descubierta por Alfonso Caso en 1932, rivaliza en importancia con este hallazgo. La tumba fue salvada del saqueo gracias a una denuncia ciudadana, evitando que se perdiera para siempre. El descubrimiento ha generado repercusión internacional y es considerado uno de los más importantes de la arqueología mexicana en décadas.
+
 ---
 
 ## ¿Dónde está ubicada la Tumba del Búho?
@@ -130,6 +132,16 @@ La Tumba 5 de Suchilquitongo es otra tumba zapoteca importante ubicada en el Cer
 
 La Tumba 10 de Huitzo es importante por varias razones. Es el descubrimiento arqueológico más relevante de la última década en México según las autoridades. Los murales están excepcionalmente conservados comparados con otros sitios. Aporta nueva información sobre los rituales funerarios zapotecas y su cosmovisión. Confirma la importancia del Valle de Etla como centro ceremonial durante el Clásico Tardío. Complementa el conocimiento obtenido de la Tumba 5 de Suchilquitongo. Para Oaxaca representa un nuevo sitio de interés turístico y refuerza la identidad cultural zapoteca. Para México es patrimonio cultural de valor incalculable que atrae atención internacional.
 
+La escultura del búho guardián es completamente única: no existe otra escultura igual en toda la arqueología mesoamericana conocida. Es la primera vez que se encuentra un búho de estuco con un rostro humano debajo del pico en este contexto funerario. La Tumba 10 se compara con la célebre Tumba 7 de Monte Albán, descubierta por Alfonso Caso en 1932, que contenía el mayor tesoro de orfebrería prehispánica encontrado en México. Mientras la Tumba 7 destacó por sus joyas de oro, la Tumba 10 destaca por su arte mural y escultura única. La tumba fue salvada del saqueo en una verdadera carrera contra el tiempo: saqueadores ya habían localizado el sitio y comenzaban a excavar cuando la denuncia ciudadana permitió la intervención del INAH. Sin esa alerta, este patrimonio invaluable se habría perdido para siempre.
+
+---
+
+## ¿Cuántas tumbas zapotecas como esta existen?
+
+Tumbas zapotecas con murales tan bien conservados como la Tumba 10 de Huitzo son extremadamente raras. En más de un siglo de arqueología en Oaxaca, solo se han encontrado unas pocas tumbas con murales policromos en buen estado. La mayoría de las tumbas zapotecas conocidas fueron saqueadas en épocas antiguas o coloniales, o sus murales se deterioraron con el tiempo. La Tumba 5 de Suchilquitongo, descubierta en 1985, es la comparación más cercana en el Valle de Etla. Monte Albán tiene más de 170 tumbas registradas, pero muy pocas conservan murales visibles.
+
+La escultura del búho guardián es aún más única: es la primera de su tipo encontrada en Mesoamérica. No existe otra representación igual de un búho de estuco con un rostro humano emergiendo bajo el pico. Por esta singularidad, la Tumba 10 de Huitzo se considera comparable en importancia a hallazgos históricos como la Tumba 7 de Monte Albán (1932), famosa por su tesoro de oro, y las tumbas de Dainzú y Lambityeco. La conservación de los pigmentos después de 1,400 años es excepcional y se debe a que la tumba permaneció sellada y las condiciones de humedad fueron relativamente estables.
+
 ---
 
 ## ¿Qué significan los nombres calendáricos en la tumba?
@@ -152,7 +164,9 @@ Las jambas son los elementos arquitectónicos verticales que flanquean la entrad
 
 ## ¿Cómo se descubrió la Tumba 10?
 
-La Tumba 10 de Huitzo fue descubierta gracias a una denuncia anónima de saqueo. En 2025, alguien alertó al Instituto Nacional de Antropología e Historia sobre actividad sospechosa en el Cerro de la Cantera, San Pablo Huitzo. El INAH envió arqueólogos a investigar. Jorge Bautista Hernández y Gabriela Galicia Moreno lideraron la investigación. Confirmaron que había una tumba y que saqueadores habían intentado acceder a ella. Afortunadamente, la tumba no fue dañada significativamente. Los arqueólogos procedieron a excavar y documentar el sitio correctamente. El hallazgo fue mantenido en reserva hasta el anuncio oficial el 23 de enero de 2026.
+La Tumba 10 de Huitzo fue descubierta gracias a una denuncia anónima de saqueo en una verdadera carrera contra el tiempo. En 2025, alguien alertó al Instituto Nacional de Antropología e Historia sobre actividad sospechosa en el Cerro de la Cantera, San Pablo Huitzo. Los saqueadores ya habían localizado la tumba y comenzaban a excavar para acceder a ella. El INAH actuó con urgencia y envió arqueólogos a investigar antes de que fuera demasiado tarde.
+
+Jorge Bautista Hernández y Gabriela Galicia Moreno lideraron la investigación. Confirmaron que había una tumba intacta y que los saqueadores estuvieron a punto de destruirla. Afortunadamente, la intervención fue a tiempo y la tumba no fue dañada significativamente. Si la denuncia ciudadana hubiera llegado días o semanas después, este tesoro arqueológico de valor incalculable se habría perdido para siempre, como ha ocurrido con cientos de tumbas saqueadas en Oaxaca. Los arqueólogos procedieron a excavar y documentar el sitio correctamente. El hallazgo fue mantenido en reserva hasta el anuncio oficial el 23 de enero de 2026.
 
 ---
 
